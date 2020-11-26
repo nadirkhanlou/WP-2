@@ -17,19 +17,23 @@
                 <span id="title-message"></span>
             <br/><br/>
             نام* <br/>
-                <input type="text" dir="rtl" class = "form-text" name="form-first-name"></input>
+                <input type="text" dir="rtl" class = "form-text" name="form-first-name"
+                    oninput="CheckPersianInput(this)" onblur="ValidateNameInput(this)"></input>
                 <span id="first-name-message"></span>
             <br/><br/>
             نام خانوادگی* <br/>
-                <input type="text" dir="rtl" class="form-text" name="form-last-name"></input>
+                <input type="text" dir="rtl" class="form-text" name="form-last-name"
+                    oninput="CheckPersianInput(this)" onblur="ValidateNameInput(this)"></input>
                 <span id="last-name-message"></span>
             <br/><br/>
             نام به انگلیسی<br/>
-                <input type="text" dir="ltr" class = "form-text" name="form-first-name-eng"></input>
+                <input type="text" dir="ltr" class = "form-text" name="form-first-name-eng"
+                    oninput="CheckEnglishInput(this)" onblur="ValidateNameInput(this)"></input>
                 <span id="first-name-eng-message"></span>
             <br/><br/>
             نام خانوادگی به انگلیسی <br/>
-                <input type="text" dir="ltr" class="form-text" name="form-last-name-eng"></input>
+                <input type="text" dir="ltr" class="form-text" name="form-last-name-eng"
+                    oninput="CheckEnglishInput(this)" onblur="ValidateNameInput(this)"></input>
                 <span id="last-name-eng-message"></span>
             <br/><br/>
             آدرس ایمیل* <br/>
