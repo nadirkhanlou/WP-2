@@ -1,0 +1,85 @@
+<html>
+<header>
+    <meta charset="utf-8"/>
+    <title>فرم</title>
+    <link rel="stylesheet" type="text/css" href="css/Style.css">
+    <script src="js/Script.js"></script>
+</header>
+<body>
+    <div class="banner">
+        <h1>فرم</h1>
+    </div>
+    <div class="main-form" dir="auto">
+        <form action="#" method="POST">
+            عنوان* <br/>
+                <input type="radio" class="form-radio-item" name="form-title" value="Mr">آقا</input>
+                <input type="radio" class="form-radio-item" name="form-title" value="Mrs">خانم</input>
+                <span id="title-message"></span>
+            <br/><br/>
+            نام* <br/>
+                <input type="text" dir="rtl" class = "form-text" name="form-first-name"></input>
+                <span id="first-name-message"></span>
+            <br/><br/>
+            نام خانوادگی* <br/>
+                <input type="text" dir="rtl" class="form-text" name="form-last-name"></input>
+                <span id="last-name-message"></span>
+            <br/><br/>
+            نام به انگلیسی<br/>
+                <input type="text" dir="ltr" class = "form-text" name="form-first-name-eng"></input>
+                <span id="first-name-eng-message"></span>
+            <br/><br/>
+            نام خانوادگی به انگلیسی <br/>
+                <input type="text" dir="ltr" class="form-text" name="form-last-name-eng"></input>
+                <span id="last-name-eng-message"></span>
+            <br/><br/>
+            آدرس ایمیل* <br/>
+                <input type="text" dir="ltr" class="form-text" name="form-email-address"
+                    onblur="ValidateEmail(this)"/>
+                <span id="email-address-message"></span>
+            <br/><br/> 
+            شماره تلفن همراه* <br/>
+                <input type="text" dir="ltr" class="form-text" name="form-phone-number"/>
+                <span id="phone-number-message"></span>
+            <br/><br/> 
+            کد ملی <br/>
+                <input type="text" dir="ltr" class="form-text" name="form-ssn"/>
+                <span id="ssn-message"></span>
+            <br/><br/>
+            رمز عبور <br/>
+                <input type="text" dir="ltr" class="form-text" name="form-password"/>
+                <span id="password-message"></span>
+            <br/><br/>
+            تایید رمز عبور <br/>
+                <input type="text" dir="ltr" class="form-text" name="form-confirm-password"/>
+                <span id="confirm-password-message"></span>
+            <br/><br/>
+            آدرس <br/>
+                <input type="text" dir="rtl" class="form-text" name="form-address"/>
+                <span id="address-message"></span>
+            <br/><br/>
+            تاریخ تولد <br/>
+                <input type="text" dir="ltr" class="form-text" name="form-birth-date"/>
+                <span id="birth-date-message"></span>
+            <br/><br/>
+            وضعیت تأهل* <br>
+                <input type="radio" class="form-radio-item" name="form-marriage-status" value="Single">مجرد</input>
+                <input type="radio" class="form-radio-item" name="form-marriage-status" value="Married">متأهل</input>
+                <input type="radio" class="form-radio-item" name="form-marriage-status" value="Divorced">طلاق گرفته</input>
+                <input type="radio" class="form-radio-item" name="form-marriage-status" value="Widow(er)">بیوه/بیوه‌مرد</input>
+                <input type="radio" class="form-radio-item" name="form-marriage-status" value="Inshallah">ان‌شاءالله به زودی</input>
+            <br/><span id="marriage-status-message"></span><br/>
+            علاقه‌مندی‌ها <br/>
+                <input type="checkbox" class="form-checkbox-item" name="form-interests" value=1>علاقه‌مندی 1</input>
+                <input type="checkbox" class="form-checkbox-item" name="form-interests" value=2>علاقه‌مندی 2</input>
+                <input type="checkbox" class="form-checkbox-item" name="form-interests" value=3>علاقه‌مندی 3</input>
+                <input type="checkbox" class="form-checkbox-item" name="form-interests" value=4>علاقه‌مندی 4</input>
+                <input type="checkbox" class="form-checkbox-item" name="form-interests" value=5>علاقه‌مندی 5</input>
+                <input type="checkbox" class="form-checkbox-item" name="form-interests" value=6>علاقه‌مندی 6</input>
+                <input type="checkbox" class="form-checkbox-item" name="form-interests" value=7>علاقه‌مندی 7</input>
+            <br/><span id="interests-message"></span><br/>
+            <br/>
+            <input type="submit" class="form-submit" name="form-submit" onclick="return void(0)" value="تأیید و ارسال"/>
+        </form>
+    </div>
+</body>
+</html>
