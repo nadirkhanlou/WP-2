@@ -1,26 +1,7 @@
 window.onload = function () {
-    // year = /([۱][۳]([۱-۸][۰-۹]|[۹][۰]))/;
-    // first_sixth_months = /([۰][۱-۶]([۰][۱-۹]|[۱-۲][۰-۹]|[۳][۰-۱]))/;
-    // second_sixth_months = /(([۰][۷-۹]|[۱][۰-۱])([۰][۱-۹]|[۱-۲][۰-۹]|[۳][۰]))/;
-    // twelfth_month = /[۱][۲]([۰][۱-۹]|[۱-۲][۰-۹])/;
-    // regex = /(([۱][۳]([۱-۸][۰-۹]|[۹][۰])))([۰][۱-۶]([۰][۱-۹]|[۱-۲][۰-۹]|[۳][۰-۱])|([۰][۷-۹]|[۱][۰-۱])([۰][۱-۹]|[۱-۲][۰-۹]|[۳][۰])|[۱][۲]([۰][۱-۹]|[۱-۲][۰-۹]))/;
+    // Default border value
+    var DEFAULT_BORDER = "2px inset rgb(118, 118, 118)";
     $(":input").inputmask();
-
-    $("#form-test").inputmask({
-        mask: "j",
-        placeholder: "",
-        definitions: {
-            'j': { //basic year
-                validator: "(19|20)\\d{2}",
-                cardinality: 4,
-                prevalidator: [
-                  { validator: "[12]", cardinality: 1 },
-                  { validator: "(19|20)", cardinality: 2 },
-                  { validator: "(19|20)\\d", cardinality: 3 }
-                ]
-              },
-        }
-    });
 
     // Input mask for phone number
     $("#form-phone-number").inputmask({
@@ -31,7 +12,22 @@ window.onload = function () {
                     buffer[i] = buffer[i].toPersianDigits();
                 }
             }
-        }
+        },
+        onincomplete: function() {
+            console.log($("#form-phone-number").css("border"));
+            if ($("#form-phone-number").val() == "") {
+                $("#phone-number-message").html("");
+                $("#form-phone-number").css("border", DEFAULT_BORDER);
+            } else {
+                $("#phone-number-message").html("شمارۀ تلفن را کامل وارد کنید.");
+                $("#phone-number-message").css("color", "red");
+                $("#form-phone-number").css("border", "3px solid red");
+            }
+        },
+        oncomplete: function() {
+            $("#phone-number-message").html("");
+            $("#form-phone-number").css("border", "3px solid green");
+        },
     });
 
     // Input mask for ssn
@@ -43,13 +39,21 @@ window.onload = function () {
                     buffer[i] = buffer[i].toPersianDigits();
                 }
             }
+        },
+        onincomplete: function() {
+            if ($("#form-ssn").val() == "") {
+                $("#ssn-message").html("");
+                $("#form-ssn").css("border", DEFAULT_BORDER);
+            } else {
+                $("#ssn-message").html("کد ملی را کامل وارد کنید.");
+                $("#ssn-message").css("color", "red");
+                $("#form-ssn").css("border", "3px solid red");
+            }
+        },
+        oncomplete: function() {
+            $("#ssn-message").html("");
+            $("#form-ssn").css("border", "3px solid green");
         }
-    });
-
-    // Input mask for birth date
-    document.getElementById("form-birth-date").addEventListener('input', function(e) {
-        console.log("listener: ", e.target.value);
-        e.target.value = e.target.value.toPersianDigits();
     });
 
     $("#form-birth-date").inputmask({
@@ -61,6 +65,20 @@ window.onload = function () {
                 }
             }
         },
+        onincomplete: function() {
+            if ($("#form-birth-date").val() == "") {
+                $("#birth-date-message").html("");
+                $("#form-birth-date").css("border", DEFAULT_BORDER);
+            } else {
+                $("#birth-date-message").html("تاریخ تولد را کامل وارد کنید.");
+                $("#birth-date-message").css("color", "red");
+                $("#form-birth-date").css("border", "3px solid red");
+            }
+        },
+        oncomplete: function() {
+            $("#birth-date-message").html("");
+            $("#form-birth-date").css("border", "3px solid green");
+        },
         definitions: {
             'a': {
                 validator: function (chrs, buffer, pos, strict, opts) {
@@ -69,7 +87,6 @@ window.onload = function () {
             },
             'b': {
                 validator: function (chrs, buffer, pos, strict, opts) {
-                    console.log(buffer['buffer']);
                     return buffer['buffer'][2] != '9' ? /[0-9]/.test(chrs) : /0/.test(chrs);
                 }
             },
@@ -270,5 +287,96 @@ function ValidateAddress(elem) {
         document.getElementById(messageElementId).innerHTML = "";
         elem.style = "border: solid green;";
     }
+}
 
+function ValidateForm(elem) {
+    let elementId = elem.id;
+    let messageElementId = elementId.substring(5, elementId.length) + "-message";
+
+    // Retrieve title from the form
+    var title = null;
+    var attribute = $('[name="form-title"]');
+    for (let i=0; i < attribute.length; i++) {
+        if (attribute[i].checked) {
+            title = attribute[i].value;
+        }
+    }
+
+    // Retrieve marital status from the form
+    var status = null;
+    var attribute = $('[name="form-marital-status"]');
+    for (let i=0; i < attribute.length; i++) {
+        if (attribute[i].checked) {
+            status = attribute[i].value;
+        }
+    }
+
+    // Retrieve the rest of the inputs
+    var firstName = $("#form-first-name").val();
+    var lastName = $("#form-last-name").val();
+    var firstNameEng = $("#form-first-name-eng").val();
+    var lastNameEng = $("#form-last-name-eng").val();
+    var emailAddress = $("#form-email-address").val();
+    var phoneNumber = $("#form-phone-number").val();
+    // var ssn = $("#form-ssn").val();  // Not used
+    var password = $("#form-password").val();
+    var confirmPassword = $("#form-confirm-password").val();
+    // var birthDate = $("#form-birth-date").val(); // Not used
+
+    // Check the requirements
+    document.getElementById(messageElementId).innerHTML = "";
+    document.getElementById(messageElementId).style = "color: red;"
+    if (title == null) {
+        document.getElementById(messageElementId).innerHTML += 
+            "لطفاً عنوان را انتخاب کنید." + "<br/>";
+    }
+    if (firstName == "" || $("#first-name-message").html() != "") {
+        document.getElementById(messageElementId).innerHTML += 
+            "لطفاً نام را به درستی وارد کنید." + "<br/>";
+    }
+    if (lastName == "" || $("#last-name-message").html() != "") {
+        document.getElementById(messageElementId).innerHTML += 
+            "لطفاً نام خانوادگی را به درستی وارد کنید." + "<br/>";
+    }
+    if (firstNameEng == "" || $("#first-name-eng-message").html() != "") {
+        document.getElementById(messageElementId).innerHTML += 
+            "لطفاً نام به انگلیسی را به درستی وارد کنید." + "<br/>";
+    }
+    if (lastNameEng == "" || $("#last-name-eng-message").html() != "") {
+        document.getElementById(messageElementId).innerHTML += 
+            "لطفاً نام خانوادگی به انگلیسی را به درستی وارد کنید." + "<br/>";
+    }
+    if (emailAddress == "" || $("#email-address-message").html() != "") {
+        document.getElementById(messageElementId).innerHTML += 
+            "لطفاً آدرس ایمیل را به درستی وارد کنید." + "<br/>";
+    }
+    if (phoneNumber == "" || $("#phone-number-message").html() != "") {
+        document.getElementById(messageElementId).innerHTML += 
+            "لطفاً شماره تلفن را به درستی وارد کنید." + "<br/>";
+    }
+    if ($("#ssn-message").html() != "") {
+        document.getElementById(messageElementId).innerHTML += 
+            "لطفاً کد ملی را به درستی وارد کنید." + "<br/>";
+    }
+    if (password == "" ||
+        password != confirmPassword ||
+        $("#password-message").html() != "" ||
+        $("#confirm-password-message").html() != "") {
+        document.getElementById(messageElementId).innerHTML += 
+            "لطفاً رمز عبور را به درستی وارد و تایید کنید." + "<br/>";
+    }
+    if ($("#address-message").html() != "") {
+        document.getElementById(messageElementId).innerHTML += 
+            "لطفاً آدرس را به درستی وارد و تایید کنید." + "<br/>";
+    }
+    if ($("#birth-date-message").html() != "") {
+        document.getElementById(messageElementId).innerHTML += 
+            "لطفاً تاریخ تولد را به درستی وارد و تایید کنید." + "<br/>";
+    }
+    if (status == null) {
+        document.getElementById(messageElementId).innerHTML += 
+            "لطفاً وضعیت تأهل را انتخاب کنید." + "<br/>";
+    }
+
+    return document.getElementById(messageElementId).innerHTML == "";
 }

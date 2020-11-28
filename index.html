@@ -15,29 +15,31 @@
     <div class="main-form" dir="auto">
         <form action="#" method="POST">
             عنوان* <br/>
-                <input type="radio" class="form-radio-item" name="form-title" value="Mr">آقا</input>
-                <input type="radio" class="form-radio-item" name="form-title" value="Mrs">خانم</input>
+            <ul class="form-radio-list">
+                <li><input type="radio" class="form-radio-item" name="form-title" value="Mr">آقا</input></li>
+                <li><input type="radio" class="form-radio-item" name="form-title" value="Mrs">خانم</input></li>
+                <li><input type="radio" class="form-radio-item" name="form-title" value="Mrx">سایر</input></li>
                 <div id="title-message"></div>
-            <br/>
+            </ul>
             نام* <br/>
-                <input type="text" dir="rtl" class = "form-text" id="form-first-name"
-                    oninput="CheckPersianInput(this)" onblur="ValidateNameInput(this)"></input>
-                <div id="first-name-message"></div>
+            <input type="text" dir="rtl" class = "form-text" id="form-first-name"
+                oninput="CheckPersianInput(this)" onblur="ValidateNameInput(this)"></input>
+            <div id="first-name-message"></div>
             <br/>
             نام خانوادگی* <br/>
-                <input type="text" dir="rtl" class="form-text" id="form-last-name"
-                    oninput="CheckPersianInput(this)" onblur="ValidateNameInput(this)"></input>
-                <div id="last-name-message"></div>
+            <input type="text" dir="rtl" class="form-text" id="form-last-name"
+                oninput="CheckPersianInput(this)" onblur="ValidateNameInput(this)"></input>
+            <div id="last-name-message"></div>
             <br/>
-            نام به انگلیسی<br/>
-                <input type="text" dir="ltr" class = "form-text" id="form-first-name-eng"
-                    oninput="CheckEnglishInput(this)" onblur="ValidateNameInput(this)"></input>
-                <div id="first-name-eng-message"></div>
+            نام به انگلیسی <br/>
+            <input type="text" dir="ltr" class = "form-text" id="form-first-name-eng"
+                oninput="CheckEnglishInput(this)" onblur="ValidateNameInput(this)"></input>
+            <div id="first-name-eng-message"></div>
             <br/>
             نام خانوادگی به انگلیسی <br/>
-                <input type="text" dir="ltr" class="form-text" id="form-last-name-eng"
-                    oninput="CheckEnglishInput(this)" onblur="ValidateNameInput(this)"></input>
-                <div id="last-name-eng-message"></div>
+            <input type="text" dir="ltr" class="form-text" id="form-last-name-eng"
+                oninput="CheckEnglishInput(this)" onblur="ValidateNameInput(this)"></input>
+            <div id="last-name-eng-message"></div>
             <br/>
             آدرس ایمیل* <br/>
                 <input type="text" dir="ltr" class="form-text" id="form-email-address"
@@ -45,50 +47,52 @@
                 <div id="email-address-message"></div>
             <br/>
             شماره تلفن همراه* <br/>
-                <input type="text" dir="ltr" class="form-text" id="form-phone-number"/>
-                <div id="phone-number-message"></div>
+            <input type="text" dir="ltr" class="form-text" id="form-phone-number"/>
+            <div id="phone-number-message"></div>
             <br/>
             کد ملی <br/>
-                <input type="text" dir="ltr" class="form-text" id="form-ssn"/>
-                <div id="ssn-message"></div>
+            <input type="text" dir="ltr" class="form-text" id="form-ssn"/>
+            <div id="ssn-message"></div>
             <br/>
-            رمز عبور <br/>
-                <input type="password" dir="ltr" class="form-text" id="form-password"
-                    oninput="CheckPassword(this)"/>
-                <div id="password-message"></div>
+            رمز عبور* <br/>
+            <input type="password" dir="ltr" class="form-text" id="form-password"
+                oninput="CheckPassword(this)"/>
+            <div id="password-message"></div>
             <br/>
-            تایید رمز عبور <br/>
-                <input type="password" dir="ltr" class="form-text" id="form-confirm-password"
-                    onblur="CheckPasswordConfirm(this)"/>
-                <div id="confirm-password-message"></div>
+            تایید رمز عبور* <br/>
+            <input type="password" dir="ltr" class="form-text" id="form-confirm-password"
+                onblur="CheckPasswordConfirm(this)"/>
+            <div id="confirm-password-message"></div>
             <br/>
             آدرس <br/>
-                <input type="text" dir="rtl" class="form-text" id="form-address"
-                    onblur="ValidateAddress(this)"/>
-                <div id="address-message"></div>
+            <input type="text" dir="rtl" class="form-text" id="form-address"
+                onblur="ValidateAddress(this)"/>
+            <div id="address-message"></div>
             <br/>
             تاریخ تولد <br/>
-                <input type="text" dir="ltr" class="form-text" id="form-birth-date"/>
-                <div id="birth-date-message"></div>
+            <input type="text" dir="ltr" class="form-text" id="form-birth-date"/>
+            <div id="birth-date-message"></div>
             <br/>
             وضعیت تأهل* <br>
-                <input type="radio" class="form-radio-item" name="form-marriage-status" value="Single">مجرد</input>
-                <input type="radio" class="form-radio-item" name="form-marriage-status" value="Married">متأهل</input>
-                <input type="radio" class="form-radio-item" name="form-marriage-status" value="Inshallah">ان‌شاءالله به زودی</input>
-            <br/><div id="marriage-status-message"></div><br/>
+            <ul class="form-radio-list">
+                <li><input type="radio" class="form-radio-item" name="form-marital-status" value="Single">مجرد</input></li>
+                <li><input type="radio" class="form-radio-item" name="form-marital-status" value="Married">متأهل</input></li>
+                <li><input type="radio" class="form-radio-item" name="form-marital-status" value="Inshallah">ان‌شاءالله به زودی</input></li>
+            </ul>
+            <div id="marriage-status-message"></div>
             علاقه‌مندی‌ها <br/>
-            <div class="form-interets-list">
-                <input type="checkbox" class="form-checkbox-item" name="form-interests" value=1>علاقه‌مندی 1</input>
-                <input type="checkbox" class="form-checkbox-item" name="form-interests" value=2>علاقه‌مندی 2</input>
-                <input type="checkbox" class="form-checkbox-item" name="form-interests" value=3>علاقه‌مندی 3</input>
-                <input type="checkbox" class="form-checkbox-item" name="form-interests" value=4>علاقه‌مندی 4</input>
-                <input type="checkbox" class="form-checkbox-item" name="form-interests" value=5>علاقه‌مندی 5</input>
-                <input type="checkbox" class="form-checkbox-item" name="form-interests" value=6>علاقه‌مندی 6</input>
-                <input type="checkbox" class="form-checkbox-item" name="form-interests" value=7>علاقه‌مندی 7</input>
-            </div>
-            <br/><div id="interests-message"></div><br/>
-            <br/>
-            <input type="submit" class="form-submit" name="form-submit" onclick="return void(0)" value="تأیید و ارسال"/>
+            <ul class="form-checkbox-list">
+                <li><input type="checkbox" class="form-checkbox-item" name="form-interests" value=1>علاقه‌مندی 1</input></li>
+                <li><input type="checkbox" class="form-checkbox-item" name="form-interests" value=2>علاقه‌مندی 2</input></li>
+                <li><input type="checkbox" class="form-checkbox-item" name="form-interests" value=3>علاقه‌مندی 3</input></li>
+                <li><input type="checkbox" class="form-checkbox-item" name="form-interests" value=4>علاقه‌مندی 4</input></li>
+                <li><input type="checkbox" class="form-checkbox-item" name="form-interests" value=5>علاقه‌مندی 5</input></li>
+                <li><input type="checkbox" class="form-checkbox-item" name="form-interests" value=6>علاقه‌مندی 6</input></li>
+                <li><input type="checkbox" class="form-checkbox-item" name="form-interests" value=7>علاقه‌مندی 7</input></li>
+            </ul>
+            <div id="interests-message"></div>
+            <input type="submit" class="form-submit" id="form-submit" onclick="return ValidateForm(this)" value="تأیید و ارسال"/>
+            <div id="submit-message"></div>
         </form>
     </div>
 </body>
